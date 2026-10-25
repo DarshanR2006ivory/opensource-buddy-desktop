@@ -1,0 +1,37 @@
+name: Deploy Supabase backend
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "supabase/functions/**"
+      - "supabase/migrations/**"
+      - "supabase/config.toml"
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+      SUPABASE_PROJECT_REF: ${{ vars.SUPABASE_PROJECT_REF }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - name: Validate deployment configuration
+        run: |
+          test -n "$SUPABASE_ACCESS_TOKEN" || (echo "Missing SUPABASE_ACCESS_TOKEN secret" && exit 1)
+          test -n "$SUPABASE_DB_URL" || (echo "Missing SUPABASE_DB_URL secret" && exit 1)
+          test -n "$SUPABASE_PROJECT_REF" || (echo "Missing SUPABASE_PROJECT_REF repository variable" && exit 1)
+      - name: Apply database migrations
+        run: supabase db push --db-url "$SUPABASE_DB_URL" --yes
+      - name: Deploy issue search
+        run: supabase functions deploy search-issues --project-ref "$SUPABASE_PROJECT_REF"
+      - name: Deploy contribution mentor
+        run: supabase functions deploy contribution-guide --project-ref "$SUPABASE_PROJECT_REF"

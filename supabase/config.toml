@@ -1,0 +1,5 @@
+[functions.search-issues]
+verify_jwt = false
+
+[functions.contribution-guide]
+verify_jwt = true
