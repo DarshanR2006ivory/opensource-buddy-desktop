@@ -52,6 +52,10 @@ describe("issue card", () => {
     expect(screen.getByText("Beginner-friendly labels")).toBeInTheDocument();
     expect(screen.getByText("Labels: 100")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /github/i })).toHaveAttribute("href", exampleIssue.html_url);
+    expect(screen.getByRole("link", { name: /ask ai mentor/i })).toHaveAttribute(
+      "href",
+      "/mentor/example/menu/4?generate=1",
+    );
     expect(screen.getByRole("link", { name: "example/menu" })).toHaveAttribute(
       "href",
       "https://github.com/example/menu",

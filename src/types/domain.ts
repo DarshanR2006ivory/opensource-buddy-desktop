@@ -106,4 +106,17 @@ export interface ContributionGuide {
     contributing: string | null;
   };
   generated_by: "ai" | "fallback";
+  issue_explanation?: string;
+  expected_outcome?: string;
+  solution_approach?: string;
+  repository_setup_workflow?: string[];
+  possible_root_causes?: string[];
+  files_to_inspect?: string[];
+  implementation_steps?: string[];
+  example_code?: string;
+  test_commands?: string[];
+  edge_cases?: string[];
+  pull_request_checklist?: string[];
+  context_note?: string;
+  repository_verification?: "not_performed";
 }

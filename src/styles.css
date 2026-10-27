@@ -167,6 +167,8 @@ button { color: inherit; }
 .guide-section ul, .guide-section ol { margin: 0; padding-left: 20px; }
 .guide-section li + li { margin-top: 5px; }
 .guide-section > p { white-space: pre-line; }
+.mentor-qualification { color: #e2bb79; font-size: 10px; font-weight: 500; }
+.mentor-code { margin: 12px 0 0; overflow-x: auto; padding: 14px; border: 1px solid #29354d; border-radius: 9px; color: #c5d0df; background: #0c1323; font-size: 11px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
 .mentor-source-links { margin-bottom: 12px !important; }
 .mentor-source-links a { display: inline-flex; align-items: center; gap: 5px; color: #72e0bd; }
 .mentor-source-links a:hover { color: #a0f0d6; }

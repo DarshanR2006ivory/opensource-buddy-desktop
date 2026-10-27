@@ -68,9 +68,9 @@ export function IssueDetailPage() {
         {user ? (
           <>
             <Button variant="secondary" onClick={handleSave} disabled={saving}><Bookmark size={14} /> {saving ? "Saving..." : "Save issue"}</Button>
-            <Button to={`/mentor/${encodeURIComponent(issue.owner)}/${encodeURIComponent(issue.repository)}/${issue.number}`}><Sparkles size={14} /> Ask the AI mentor</Button>
           </>
-        ) : <p>Sign in to save this issue, track your progress, or request optional AI guidance.</p>}
+        ) : <p>Sign in to save this issue or track your progress. AI guidance requires an account.</p>}
+        <Button to={`/mentor/${encodeURIComponent(issue.owner)}/${encodeURIComponent(issue.repository)}/${issue.number}?generate=1`}><Sparkles size={14} /> Ask AI Mentor</Button>
         {message && <p className={message.includes("saved") ? "success-message" : "error-message"} role="status">{message}</p>}
         <p>Open-source issue matching is an estimate. Review the discussion, repository activity, and maintainer instructions before starting work.</p>
       </aside>

@@ -101,6 +101,12 @@ export function IssueCard({
               <Bookmark size={15} aria-hidden="true" /> {saving ? "Saving" : "Save"}
             </Button>
           )}
+          <Button
+            variant="quiet"
+            to={`/mentor/${encodeURIComponent(issue.owner)}/${encodeURIComponent(issue.repository)}/${issue.number}?generate=1`}
+          >
+            <Sparkles size={15} aria-hidden="true" /> Ask AI Mentor
+          </Button>
           <a className="icon-link" href={issue.html_url} target="_blank" rel="noreferrer">
             GitHub <ExternalLink size={13} aria-hidden="true" />
           </a>
